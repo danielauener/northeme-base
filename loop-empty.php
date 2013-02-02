@@ -1,4 +1,4 @@
-<article id="post-none" class="post no-results not-found">
+<article id="post-none" class="post empty">
 
 	<h1 class="post-title"><?php _e( 'Nothing Found', 'northeme' ); ?></h1>
 
