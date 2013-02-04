@@ -1,7 +1,9 @@
 			</div>
 			
 			<footer class="site-footer">
-				
+                <div class="widgets <?php echo northeme_widget_count_classes( 'widgets-footer' ); ?>">
+                    <?php dynamic_sidebar( 'widgets-footer' ); ?>
+                </div>
 			</footer>
 		</div>
   

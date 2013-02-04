@@ -12,9 +12,9 @@
 
         <?php wp_head(); ?>
     </head>
-    <body>
+    <body <?php body_class(); ?>>
         <div class="site">
         	<header class="site-header">
-        		<a href="<?php bloginfo('url'); ?>">Logo</a>
+        		<a class="logo" href="<?php bloginfo('url'); ?>">Logo</a>
         	</header>
         	<div class="site-content">

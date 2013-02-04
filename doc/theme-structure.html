@@ -1,16 +1,5 @@
 <!-- 
-	0)
-	Overall structure 
-	
-	Notes:
-		- the entire website is called site (2012 calls it page and uses site
-		in nested tags, but I like it better this way), my thinking: all is one 
-		(web)site and on the site are several pages ... hm	
-
-		- 2012 uses some ids, I removed them compltely building only on classes
-		except for the post article (#post-3,#post-4 ...), there it makes sense 
-		i think because these are literally ids, but its late :)
-
+	0) Overview 
 -->
 <!DOCTYPE html>
 <html>
@@ -38,85 +27,39 @@
 	</body>
 </html>
 
-<!--
-	1)
-	the content which is loaded in .site-content
-
-	Notes:
-		- Sections: "In HTML5 for Web Designers, Jeremy Keith reminds us to 
-		ensure that everything within a single section element is related" 
-		thats why 1a) 1b), section works only in some cases (all content inside 
-		is related tags, categories, ...), thats the way 2012 goes as well if 
-		I'm understanding their coding right 
-
-		- aside, taking another aproach than 2012 here, they define secondary 
-		as a div and making every widget inside an aside, but all the sources
-		I found recommend one aside as sidebar (sort of) and widgets as articles
-		articles. this matches the html5 spec as well 
-
-		- secondary/primary are the same in 2012, but widely used in other 
-		themes as well, there are no better names that make sence semantically.
-		Avoiding left/right crap 
--->
 
 <!-- 
-	1a)
-	Content structure section 
+	1a) Content section view 
 -->
-<section class="page-content primary"> 
-	<div class="content" role="main">
-		<article />
-		<article />
-		...
-	</div>
+<section class="page-content primary" role="main">
+	<article />
+	<article />
+	...
 </section>
-<aside class="secondary" role="complementary">
-	<div class="widgets area-1">
-		<article class="widget-1" />
-		<article class="widget-2" />
-	</div>
-	<div class="widgets area-2">
-		<article class="widget-1" />
-		<article class="widget-2" />
-	</div>
+<aside class="secondary widgets" role="complementary">
+	<article class="widget-1" />
+	<article class="widget-2" />
+	<article class="widget-3" />
 </aside>
 
 
 <!-- 
-	1b)
-	Content structure div (content might not be related or ?single?) 
+	1b) Content div view
 -->
-<div class="page-content"> 
-	<div class="content" role="main">
-		<article />
-		<article />
-		...
-	</div>
+<div class="page-content primary" role="main">
+	<article />
+	<article />
+	...
 </div>
-<aside class="secondary" role="complementary">
-	<div class="widgets area-1">
-		<article class="widget-1" />
-		<article class="widget-2" />
-	</div>
-	<div class="widgets area-2">
-		<article class="widget-1" />
-		<article class="widget-2" />
-	</div>
+<aside class="secondary widgets" role="complementary">
+	<article class="widget-1" />
+	<article class="widget-2" />
+	<article class="widget-3" />
 </aside>
 
-<!-- 
-	2)
-	Articles
 
-	Notes: 
-		- for id explanation look above
-		- 2012 is calling the article .post and all containing elements 
-		entry-header, entry-title ..., really don't understand why, renamed 
-		them to .post-header, .post-title ... 
-		- after all I've read today we have
-		to be careful with header/footer in articles and avoid them if possible
-		(in the example you could remove header because it contains only one 
-		element)
+<!-- 
+	2) Article view
 -->
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="post-header">
@@ -133,10 +76,8 @@
 
 
 <!-- 
-	3)
-	Putting it all together
+	3) All together view
 -->
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -151,33 +92,24 @@
 			</header>
 			
 			<div class="site-content">
-				<section class="page-content primary"> 
-					<div class="content" role="main">
-						
-						<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-							<header class="post-header">
-								<h1 class="post-title"><?php the_title(); ?></h1>
-							</header>
+				<section class="page-content primary" role="main"> 
+					<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+						<header class="post-header">
+							<h1 class="post-title"><?php the_title(); ?></h1>
+						</header>
 
-							<div class="post-content">
-								<?php the_content(); ?>
-							</div>
+						<div class="post-content">
+							<?php the_content(); ?>
+						</div>
 
-							<footer class="post-footer">
-							</footer>
-						</article>
-						
-					</div>
+						<footer class="post-footer">
+						</footer>
+					</article>
 				</section>
-				<aside class="secondary" role="complementary">
-					<div class="widgets area-1">
-						<article class="widget-1" />
-						<article class="widget-2" />
-					</div>
-					<div class="widgets area-2">
-						<article class="widget-1" />
-						<article class="widget-2" />
-					</div>
+				<aside class="secondary widgets" role="complementary">
+					<article class="widget-1" />
+					<article class="widget-2" />
+					<article class="widget-3" />
 				</aside>
 			</div>
 			
