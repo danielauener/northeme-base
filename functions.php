@@ -1,12 +1,19 @@
 <?php 
 	
-	add_action( 'after_setup_theme', 'northeme_setup' );
+	/**
+	 * [northeme_setup description]
+	 * @return [type] [description]
+	 */
 	function northeme_setup() {
 		
 	}
+	add_action( 'after_setup_theme', 'northeme_setup' );
 	
 
-	add_action( 'wp_enqueue_scripts', 'northeme_css_js' );
+	/**
+	 * [northeme_css_js description]
+	 * @return [type] [description]
+	 */
 	function northeme_css_js() {
 		
 		wp_enqueue_style( 'styles', get_template_directory_uri().'/css/styles.css' );
@@ -18,16 +25,25 @@
 		//TODO: alternative cdns
 
 	}
+	add_action( 'wp_enqueue_scripts', 'northeme_css_js' );
 	
 
-	add_filter( 'body_class', 'northeme_body_classes' );
+	/**
+	 * [northeme_body_classes description]
+	 * @param  [type] $classes [description]
+	 * @return [type]          [description]
+	 */
 	function northeme_body_classes($classes) {
 		$classes[] = (is_active_sidebar( 'widgets-sidebar' )) ? ' two-column' : ' one-column';
 		return $classes;
 	}
-	
-	
-	add_action( 'widgets_init', 'northeme_widgets_init' );
+	add_filter( 'body_class', 'northeme_body_classes' );
+
+
+	/**
+	 * [northeme_widgets_init description]
+	 * @return [type] [description]
+	 */
 	function northeme_widgets_init() {
 		register_sidebar( array(
 			'name' => __( 'Sidebar Widgets', 'northeme' ),
@@ -57,8 +73,14 @@
 			'after_title' => '</h3>',
 		) );	
 	}
+	add_action( 'widgets_init', 'northeme_widgets_init' );
 
 
+	/**
+	 * [northeme_widget_count_classes description]
+	 * @param  [type] $widget_area [description]
+	 * @return [type]              [description]
+	 */
 	function northeme_widget_count_classes( $widget_area ) {
 		$sidebars = wp_get_sidebars_widgets();
 		if ( !array_key_exists( $widget_area, $sidebars ) || !is_array( $sidebars[ $widget_area ] ))

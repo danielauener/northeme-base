@@ -1,0 +1,29 @@
+//////////
+// GRID //
+//////////
+
+body {
+	width: 100%;
+	float: left;
+}
+
+@mixin row($columns:$columns) {
+  // Utility variable — you should never need to modify this
+  $_gridsystem-width: ($column-width*$columns) + ($gutter-width*$columns);
+
+	display: inline-block;
+	overflow: hidden;
+	width: $total-width * ( ( $gutter-width + $_gridsystem-width) / $_gridsystem-width );
+	margin: 0 $total-width*((($gutter-width*.5)/$_gridsystem-width)*-1);
+}
+
+@mixin column($x,$columns:$columns) {
+  // Utility variable — you should never need to modify this
+  $_gridsystem-width: ($column-width*$columns) + ($gutter-width*$columns);
+
+	display: inline;
+	float: left;
+	overflow: hidden;
+	width: $total-width * ( ( ( ( $gutter-width + $column-width ) * $x ) - $gutter-width ) / $_gridsystem-width );
+	margin: 0 $total-width*(($gutter-width*.5)/$_gridsystem-width);
+}
