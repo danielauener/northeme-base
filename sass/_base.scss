@@ -1,9 +1,17 @@
 $column-width: 60px;
 $gutter-width: 20px;
 $columns: 12;
-$total-width: 100%; //($column-width*$columns) + ($gutter-width*$columns);
+
+//$total-width: ($column-width*$columns) + ($gutter-width*$columns);
+$total-width: 100%;
 
 @import "compass/reset";
+@import "compass/utilities";
+@import "compass/css3";
 @import "semantic-gs";
 
-$color1: #333;
+$white: #efefef;
+$black: #222;
+$blue-light: #7be8ff;
+$blue-medium: #68c0d4;
+$blue-dark: #539baa;

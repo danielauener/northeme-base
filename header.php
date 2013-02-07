@@ -9,7 +9,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title><?php wp_title( '|', true, 'right' ); ?></title>
         <meta name="viewport" content="width=device-width" />
-
+        <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
+        
         <?php wp_head(); ?>
     </head>
     <body <?php body_class(); ?>>

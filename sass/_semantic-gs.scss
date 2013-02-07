@@ -20,7 +20,8 @@ body {
 @mixin column($x,$columns:$columns) {
   // Utility variable — you should never need to modify this
   $_gridsystem-width: ($column-width*$columns) + ($gutter-width*$columns);
-
+	
+	//@include box-sizing(border-box); 
 	display: inline;
 	float: left;
 	overflow: hidden;

@@ -16,7 +16,7 @@
 	 */
 	function northeme_css_js() {
 		
-		wp_enqueue_style( 'styles', get_template_directory_uri().'/css/styles.css' );
+		//wp_enqueue_style( 'styles', get_template_directory_uri().'/css/styles.css' );
 
 		wp_enqueue_script( 'jquery', '/js/jquery-1.9.0.js' );
 		wp_enqueue_script( 'modenizr', '/js/modernizr-2.6.2.js' );

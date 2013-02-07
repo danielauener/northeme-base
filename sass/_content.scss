@@ -1,0 +1,13 @@
+.site-content {
+	@include leader();
+	@include trailer();
+	@include clearfix;
+}
+
+.page-content.primary {
+	@include column(8);
+}
+
+.secondary {
+	@include column(4);
+}

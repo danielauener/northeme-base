@@ -1,0 +1,11 @@
+.site-header {
+	@include padding-leader(1,40px);
+	@include padding-trailer(1,40px);
+	@include adjust-font-size-to(40px);
+	background-color: $black;
+	text-align: center;
+
+	.logo {
+		color: $white;
+	}
+}
