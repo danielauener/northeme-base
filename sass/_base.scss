@@ -2,7 +2,10 @@ $column-width: 60px;
 $gutter-width: 20px;
 $columns: 12;
 
+// make your layout static 
 //$total-width: ($column-width*$columns) + ($gutter-width*$columns);
+
+// make your layout fluid
 $total-width: 100%;
 
 @import "compass/reset";
@@ -12,6 +15,38 @@ $total-width: 100%;
 
 $white: #efefef;
 $black: #222;
+$blue-lighter: #dae8eb;
 $blue-light: #7be8ff;
 $blue-medium: #68c0d4;
 $blue-dark: #539baa;
+
+
+/**
+ * A container mixin to set an max-width to your fluid site elements
+ * @param  px $max-width The wished max-width of the element, default is 980px
+ * @return css
+ */
+@mixin container($max-width: 980px) {
+	max-width: $max-width;
+	width: auto!important;
+	width: $max-width;
+	margin: 0 auto;
+	@include clearfix; 
+}
+
+
+/**
+ * Adds horizontal lines to the body, to debug the vertcal grid. Removes all
+ * backgrounds from elements and sets the color to black
+ * @return css
+ */
+@mixin debug-vertical-grid {
+	@include debug-vertical-alignment;
+	
+	background-color: #fff;
+
+	* {
+		background: none!important;
+		color: #000!important;
+	}		
+}
