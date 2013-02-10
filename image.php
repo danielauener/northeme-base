@@ -1,0 +1,3 @@
+<?php 
+	// TODO: Image template
+?>

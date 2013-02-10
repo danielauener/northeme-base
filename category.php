@@ -1,0 +1,3 @@
+<?php 
+	// TODO: Category template
+?>

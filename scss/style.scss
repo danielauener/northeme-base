@@ -14,7 +14,18 @@ This theme, like WordPress, is licensed under the GPL.
 */
 @import "base";
 @import "typography";
+
+body { 
+	background: $white; 
+
+	&.debug-v-grid {
+		@include debug-vertical-grid;	
+	}
+
+	//@include debug-vertical-grid;
+}
+
 @import "components";
 @import "header";
 @import "content";
-@import "footer";
+@import "footer"; 
