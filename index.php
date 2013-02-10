@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-	<div class="page-content primary" role="main"> 
+	<section class="page-content primary" role="main"> 
 
 		<?php 
 			if ( have_posts() ): 
@@ -12,7 +12,7 @@
 			endif; 
 		?>
 
-	</div>
+	</section>
 
 	<?php get_sidebar(); ?>
 
