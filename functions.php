@@ -75,22 +75,115 @@
 	}
 	add_action( 'widgets_init', 'northeme_widgets_init' );
 
+	if ( ! function_exists('northeme_widget_count_classes') ) {
 
-	/**
-	 * [northeme_widget_count_classes description]
-	 * @param  [type] $widget_area [description]
-	 * @return [type]              [description]
-	 */
-	function northeme_widget_count_classes( $widget_area ) {
-		$sidebars = wp_get_sidebars_widgets();
-		if ( !array_key_exists( $widget_area, $sidebars ) || !is_array( $sidebars[ $widget_area ] ))
-			return '';
+		/**
+		 * [northeme_widget_count_classes description]
+		 * @param  [type] $widget_area [description]
+		 * @return [type]              [description]
+		 */
+		function northeme_widget_count_classes( $widget_area ) {
+			$sidebars = wp_get_sidebars_widgets();
+			if ( !array_key_exists( $widget_area, $sidebars ) || !is_array( $sidebars[ $widget_area ] ))
+				return '';
 
-		$widget_count = count( $sidebars[ $widget_area ] );
-		$classes = 'widget-count-'.$widget_count;
+			$widget_count = count( $sidebars[ $widget_area ] );
+			$classes = 'widget-count-'.$widget_count;
 
-		if ($widget_count >= 4)
-			$classes .= ' widget-count-many';
+			if ($widget_count >= 4)
+				$classes .= ' widget-count-many';
 
-		return $classes;
+			return $classes;
+		}
+
+	}
+
+
+	if ( ! function_exists('northeme_comment') ) {
+
+		/**
+		 * [northeme_comment description]
+		 * @param  [type] $comment [description]
+		 * @param  [type] $args    [description]
+		 * @param  [type] $depth   [description]
+		 * @return [type]          [description]
+		 */
+		function northeme_comment( $comment, $args, $depth ) {
+			$GLOBALS['comment'] = $comment;
+
+			$element = ($args['style'] == 'article') ? '<article' : '<div';
+
+			if ($comment->comment_type != 'pingback' && $comment->comment_type != 'trackback'): ?>
+				<li><?php
+					
+					if ($args['style'] == 'article') : ?> 
+						<article id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>><?php
+					else : ?>
+						<div id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>><?php
+					endif; ?>
+					
+						<div class="comment-author vcard">
+							<?php echo get_avatar( $comment, 40 ); ?>
+							<?php printf( __( '%s <span class="says">says:</span>' ), sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) ); ?>
+						</div><!-- .comment-author .vcard -->
+						<?php if ( $comment->comment_approved == '0' ) : ?>
+							<em class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.' ); ?></em>
+							<br />
+						<?php endif; ?>
+
+						<div class="comment-meta commentmetadata"><a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
+							<?php
+								/* translators: 1: date, 2: time */
+								printf( __( '%1$s at %2$s' ), get_comment_date(),  get_comment_time() ); ?></a><?php edit_comment_link( __( '(Edit)' ), ' ' );
+							?>
+						</div><!-- .comment-meta .commentmetadata -->
+
+						<div class="comment-body"><?php comment_text(); ?></div>
+
+						<div class="reply">
+							<?php comment_reply_link( array_merge( $args, array( 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+						</div><?php
+
+					if ($args['style'] == 'article') : ?> 
+						</article><?php
+					else : ?>
+						</div><?php
+					endif;
+
+				// replies get listed here
+
+			else: ?>
+				<li class="post pingback">
+					<p>
+						<?php _e( 'Pingback:' ); ?> 
+						<?php comment_author_link(); ?>
+						<?php edit_comment_link( __( '(Edit)' ), ' ' ); ?>
+					</p><?php
+			endif;
+		}
+
+	}
+
+
+	if ( ! function_exists('northeme_comment_end') ) {
+
+		/**
+		 * [twentyten_comment_end description]
+		 * @param  [type] $comment [description]
+		 * @param  [type] $args    [description]
+		 * @param  [type] $depth   [description]
+		 * @return [type]          [description]
+		 */
+		function northeme_comment_end($comment, $args, $depth) {
+
+			switch($args['style']) {
+				case 'article': 
+					echo "</article>\n</li>\n";
+					break;
+				default:
+					echo "</li>\n";
+			}
+		
+		}
+
 	}
