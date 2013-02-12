@@ -6,7 +6,7 @@
 			if ( have_posts() ): ?>
 				<header class="archive-header">
 					<h1 class="archive-title"><?php
-						printf( __( 'Category Archives: %s', 'twentytwelve' ), '<span>' . single_cat_title( '', false ) . '</span>' ); ?>
+						printf( __( 'Category Archives: %s' ), '<span>' . single_cat_title( '', false ) . '</span>' ); ?>
 					</h1><?php	
 
 					if ( $category_description = category_description() ) : ?>
