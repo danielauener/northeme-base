@@ -1,13 +1,26 @@
+.alignright {
+	float:right;
+}
+
+.alignleft {
+	float:left;
+}
+
+.aligncenter{
+	display:block;
+	margin:auto;
+}
+
 .site-content {
-	@include leader();
-	@include trailer();
+	@include padding-leader();
+	@include padding-trailer();
 	@include clearfix;
+	@include container();
 }
 
 .page-content.primary {
 	@include column(8);
 	
-	padding-left:20px;
 }
 
 .secondary {

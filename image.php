@@ -41,6 +41,18 @@
 
 		endwhile; ?>
 
+		<?php
+			if ( $custom_sidebar_exists = ((locate_template( 'sidebar-image.php' )) != '') ) :
+          		get_sidebar('image');
+          	endif;
+		?>
+
 	</section>
+
+	<?php 
+		if ( !$custom_sidebar_exists ) :
+			get_sidebar();
+		endif;
+	?>
 
 <?php get_footer(); ?>

@@ -10,9 +10,19 @@
 			else:
 				get_template_part('loop','empty');
 			endif; 
+			
+			if ( $custom_sidebar_exists = ((locate_template( 'sidebar-'.get_post_format().'.php' )) != '') ) :
+          		get_sidebar(get_post_format());
+          	endif;
 		?>
 
 	</section>
+
+	<?php 
+		if ( !$custom_sidebar_exists ) :
+			get_sidebar();
+		endif;
+	?>
 
 	<?php get_sidebar(); ?>
 

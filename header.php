@@ -17,5 +17,8 @@
         <div class="site">
         	<header class="site-header">
         		<a class="logo" href="<?php bloginfo('url'); ?>">Logo</a>
+                <nav class="header-nav" role="navigation">
+                    <?php wp_nav_menu( array( 'theme_location' => 'primary-nav' ) ); ?>
+                </nav>
         	</header>
         	<div class="site-content">

@@ -20,10 +20,18 @@
 			else:
 				get_template_part('loop','empty');
 			endif; 
+
+			if ( $custom_sidebar_exists = ((locate_template( 'sidebar-category.php' )) != '') ) :
+          		get_sidebar('category');
+          	endif;
 		?>
 
 	</section>
 
-	<?php get_sidebar(); ?>
+	<?php 
+		if ( !$custom_sidebar_exists ) :
+			get_sidebar();
+		endif;
+	?>
 
 <?php get_footer(); ?>

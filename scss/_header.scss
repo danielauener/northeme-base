@@ -1,11 +1,37 @@
 .site-header {
-	@include padding-leader(1,40px);
-	@include padding-trailer(1,40px);
-	@include adjust-font-size-to(40px);
+
+	@include clearfix;
 	background-color: $black;
 	text-align: center;
 
 	.logo {
+		@include type-logo(40px);
+		@include leader(1,40px);
+		@include trailer(1,40px);
 		color: $white;
+	}
+
+	.header-nav {
+		text-align:center;
+
+		.menu {
+			@include inline-block;
+		}
+
+		.menu-item {
+			@include float-left;
+		}
+
+		.menu-item a {
+			@include type-link;
+			
+			padding-left:10px;
+			padding-right:10px;
+			color:$white;
+		}
+
+		.sub-menu {
+			display:none;
+		}
 	}
 }

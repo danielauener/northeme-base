@@ -5,7 +5,14 @@
 	 * @return [type] [description]
 	 */
 	function northeme_setup() {
+		load_theme_textdomain( 'northeme', get_template_directory() . '/languages' );
 		
+		register_nav_menu( 'primary-nav', __( 'Primary Menu' ) );		
+
+		add_editor_style();
+
+		add_theme_support( 'post-formats', array( 'aside', 'image', 'link', 'quote', 'status' ) );
+		add_theme_support( 'automatic-feed-links' );
 	}
 	add_action( 'after_setup_theme', 'northeme_setup' );
 	
@@ -143,12 +150,6 @@
 						<div class="reply">
 							<?php comment_reply_link( array_merge( $args, array( 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
 						</div><?php
-
-					if ($args['style'] == 'article') : ?> 
-						</article><?php
-					else : ?>
-						</div><?php
-					endif;
 
 				// replies get listed here
 

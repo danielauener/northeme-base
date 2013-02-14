@@ -1,8 +1,12 @@
 .site-footer {
 	@include clearfix;
 	
-	background: $blue-light;
+	background: $black;
 
+	.widgets {
+		@include container;
+	}
+	
 	.widget {
 		@include column(3);
 	}

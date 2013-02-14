@@ -13,10 +13,18 @@
 				</nav><?php
 		
 			endif;
+			
+			if ( $custom_sidebar_exists = ((locate_template( 'sidebar-single.php' )) != '') ) :
+          		get_sidebar('single');
+          	endif;
 		?>
 
 	</section>
 
-	<?php get_sidebar(); ?>
+	<?php 
+		if ( !$custom_sidebar_exists ) :
+			get_sidebar();
+		endif;
+	?>
 
 <?php get_footer(); ?>
