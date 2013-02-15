@@ -4,9 +4,7 @@
 
 		<?php 
 			if ( have_posts() ): ?>
-				<header class="page-header">
-					<h1 class="page-title"><?php printf( __( 'Search Results for: %s' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
-				</header><?php
+				<h1 class="page-title"><?php printf( __( 'Search Results for: %s' ), '<span>' . get_search_query() . '</span>' ); ?></h1><?php
 
 				while ( have_posts() ): the_post();
 					get_template_part('loop', get_post_format() );

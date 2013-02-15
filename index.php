@@ -12,8 +12,8 @@
 			endif; 
 			
 			if ( $custom_sidebar_exists = ((locate_template( 'sidebar-'.get_post_format().'.php' )) != '') ) :
-          		get_sidebar(get_post_format());
-          	endif;
+				get_sidebar(get_post_format());
+			endif;
 		?>
 
 	</section>
